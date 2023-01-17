@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,inital-scale=1">
+        <title>{% block title %}Login{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+    </head>
+    <body>
+<section class="main_breadcrumb">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="breadcrumb-content">
+				<h2>login</h2>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="">register</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<div id="content" class="cart_page checkout_page register_page login_page">
+<!-- cart -->
+	<div id="register" class="cart_section checkout_section register_section">
+		<div class="container-fluid" id="checkout">
+				
+			<div class="row billing_and_payment_option wow fadeInDown   animated">
+				<div class="heading_wrapper wow fadeInDown animated">
+					<h2 class="wow fadeInDown animated">Login your Account</h2>
+				</div>
+				<!-- Billing Address -->
+				<div class="login_box">
+						<form method="post" class="eb-form eb-mailform form-checkout" novalidate="novalidate">
+							 {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+                           
+    
+                            <div class="form-wrap">
+                             {# <label for="inputEmail">Email</label> #}
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" id="checkout-email-1" class="form-input form-control" autocomplete="email" required autofocus placeholder="E-Mail">
+								{# <input class="form-input form-control" id="checkout-email-1" type="email" name="email" data-constraints="@Email @Required" placeholder="E-Mail"> #}
+							</div>
+							<div class="form-wrap">
+                            {# <label for="inputPassword">Password</label> #}
+    <input type="password" name="password" id="inputPassword" class="form-input form-control" id="checkout-city-1" autocomplete="current-password" required placeholder="Password:">
+								{# <input class="form-input form-control" id="checkout-city-1" type="text" name="password" data-constraints="@Required" placeholder="Password:"> #}
+							</div>
+							
+							{# <button type="submit" class="btn ">Register</button> #}
+                             <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+  
+
+    <button class="btn btn-primary" type="submit">
+        Sign in
+    </button>
+							
+							<p class="signInclass"> Dont Have an Account?  &nbsp;<a href="{{path('app_register')}}">Register</a> </p>
+						
+					</form>
+					<div class="clear"></div>
+				</div>
+				<!-- Delivery Address  -->
+			</div>
+			<!-- your shopping cart -->
+		</div>	
+	</div>	
+<!-- cart end-->	
+</div>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+  </body>
+</html>
+

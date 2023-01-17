@@ -1,0 +1,106 @@
+
+{# <section>
+	<div id="slideWiz" class="slideWiz" style="width: 100%; height: 500px;"></div>
+</section> #}
+<!-- silder End -->
+<!-- about Us -->
+<div class="container-fluid">
+	<div id="about_us" class="about_section" style="background-image: url({{apropos.file}});width: 100%;background-repeat: no-repeat; background-size: cover;">
+		
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="about_text wow slideInLeft">
+						<h1>{{apropos.titre}}</h1>
+						<p>{{apropos.description}}.</p>
+						
+						<!--<h3>Contact Us</h3>
+						<h2 class="about_contact"><i class="fa fa-volume-control-phone"></i> +91-123-456-7890</h2>-->
+						<a href="{{path('app_vetement')}}" class="btn">Produits</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="about_images wow slideInRight">
+						<!--<img src="assets/image/about_img.jpg" width="100%" alt="silder images" title="silder images">-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- about Us end-->
+
+
+
+<!-- Our products  -->
+	<div id="products" class="products_section">
+		<div class="container-fluid">
+		{% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+		{% endfor %}
+		{% if vetement | length > 0 %}
+			<div class="heading_wrapper wow fadeInDown animated">
+				<h2 class="wow fadeInDown animated">Produits</h2>
+			</div>
+			<div class="row">
+
+			{% for vetements in vetement %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div id="product" class="owl-carousel owl-theme lift lift-lg">
+			<!--1 -->
+				<div class="item" id="item">
+				<input type="hidden" class='product_id' value="{{vetements.id}}" />
+					<div class="col-sm-12">
+						<div class="product-thumb-products">
+							<div class="image wow fadeInDown animated lift lift-lg">
+								<a href="{{path('app_show',{'slug': vetements.slug})}}"><img class="wow fadeInDown animated" src="{{vich_uploader_asset(vetements ,'imageFile')}}" title="Kundli Dosha" width="100%"></a>
+								
+						
+							</div>
+							<div class="caption">
+								
+								<div class="rate-and-title">
+									<h4 class="wow fadeInDown animated"><a href="{{path('app_show',{'slug': vetements.slug})}}">{{vetements.nom}}</a></h4>
+									
+									<p class="price wow fadeInDown animated">
+										<span class="price-new">${{vetements.prix}}</span>  
+									</p>
+									{# <button type="button" class="btn wow fadeInDown animated" onclick="" title="Add to Cart"><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></button> #}
+									<a href="{{path('app_panier_add',{'id': vetements.id})}}" class="btn btn-add-panier wow fadeInDown animated" ><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+                    				
+				</div>				
+				</div>				
+				</div>		
+
+				{% endfor %}
+
+ 				</div>
+				{% else %}
+
+				<H2 class="text-center">
+				C'EST VIDE!
+				</H2>
+				{% endif %}
+				</div>
+			</div>
+	
+<!-- Products End-->
+
+
+
+<!-- script files -->
+<!-- home silder -->
+<script>
+
+</script>
+
+	
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/custom.js"></script>
+	
+

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AproposController!{% endblock %}
+
+{% block body %}
+<div id="content" class="about_page">
+<!-- about Us -->
+
+<div id="website_visitors" class="astrologers-work" style="background-image:url({{apropos.file}});">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="astrologers_title">
+					<h2 class="wow fadeInDown animated">{{apropos.titre}}</h2>
+					<p class="wow fadeInDown animated">{{apropos.description}}.</p>
+				</div>
+			</div>
+			
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="astrologers_visitors">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="astrologers_experience">
+							<h5 class="wow fadeInDown animated">{{apropos.contact}}</h5>
+                            
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="astrologers_experience">
+							<h5 class="wow fadeInDown animated"><a href="{{apropos.facebook}}">{{apropos.facebook}}</a></h5>
+						</div>
+					</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<div class="astrologers_experience">
+							<h5 class="wow fadeInDown animated">{{apropos.email}}</h5>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+{% endblock %}

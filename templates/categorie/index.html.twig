@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{categorie.nom}}{% endblock %}
+
+{% block body %}
+<!-- Our products  -->
+	<div id="products" class="products_section">
+		<div class="container-fluid">
+			<div class="heading_wrapper wow fadeInDown animated">
+				<h2 class="wow fadeInDown animated">{{categorie.nom}}</h2>
+				<p class="wow fadeInDown animated">{{categorie.description}}</p>
+			</div>
+			<div class="row">
+
+			{% for vetement in vetements %}
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div id="product" class="owl-carousel owl-theme lift lift-lg">
+			<!--1 -->
+				<div class="item" id="item">
+				<input type="hidden" class='product_id' value="{{vetement.id}}" />
+					<div class="col-sm-12">
+						<div class="product-thumb-products">
+							<div class="image wow fadeInDown animated lift lift-lg">
+								<a href="{{path('app_show',{'slug': vetement.slug})}}"><img class="wow fadeInDown animated" src="{{vich_uploader_asset(vetement ,'imageFile')}}" title="Kundli Dosha" width="100%"></a>
+								
+						
+							</div>
+							<div class="caption">
+								
+								<div class="rate-and-title">
+									<h4 class="wow fadeInDown animated"><a href="{{path('app_show',{'slug': vetement.slug})}}">{{vetement.nom}}</a></h4>
+								
+									<p class="price wow fadeInDown animated">
+										<span class="price-new">${{vetement.prix}}</span>  
+									</p>
+									<a href="{{path('app_panier_add',{'id': vetement.id})}}" class="btn btn-add-panier wow fadeInDown animated" ><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+                    				
+				</div>				
+				</div>				
+				</div>		
+
+				{% endfor %}
+
+				</div>
+			</div>
+			</div>
+		
+		<div class="d-flex justify-content-center" >
+		{% do vetements.setPageRange(2) %}
+		{{ knp_pagination_render(vetements,'base/pagination.html.twig')}}
+		</div>
+	
+<!-- Products End-->
+{% endblock %}

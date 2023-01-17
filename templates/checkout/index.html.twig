@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block body %}
+<div id="content" class="cart_page checkout_page">
+<!-- cart -->
+	<div id="cart" class="cart_section checkout_section">
+		<div class="container-fluid" id="checkout">
+			<div class="row">
+			<div class="row billing_and_payment_option wow fadeInDown  col-lg-4 col-md-4 col-sm-12 col-xs-12 animated">
+				<!-- Billing Address -->
+				<div class="">
+					<h3>Billing Address</h3>
+					<p>{{user.nom ~ " " ~ user.prenom }}</p>
+					<p>{{user.telephone}}</p>
+					<p>{{user.addresse}}</p>
+					
+					<a href="{{path("app_register")}}" class="btn btn-primary">changer addresse</a>
+
+					
+				</div>
+				
+			</div>
+			<!-- your shopping cart -->
+			<div class="row your_cart wow fadeInDown col-lg-8 col-md-8 col-sm-12 col-xs-12animated">
+				<h2>your shopping cart</h2>
+			<div class="row">
+			{% if items | length > 0 %}
+				<div class="table-custom-responsive wow fadeInDown animated">
+				
+					<table class="table-custom table-cart table-responsive">
+						<thead>
+							<tr>
+							 	{# <th>Image</th> #}
+								<th>Product name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Total</th>
+								<th></th>
+							</tr>
+						</thead>
+							<tbody>
+							{% for item in items %}
+								<tr>
+								{# <td><img src="{{vich_uploader_asset(item.product ,'imageFile')}}" alt="" width="146" height="132"></td> #}
+									<td><a class="table-cart-link" href="#">{{item.product.nom}}</a></td>
+									<td>${{item.product.prix}}</td>
+									<td>
+										<div class="table-cart-stepper">
+										<div class="stepper "><p>{{item.quantity}}</p></div>
+										
+										</div>
+									</td>
+									<td>${{item.product.prix * item.quantity}}</td>
+									<td>
+									<a href="{{path('app_panier_remove',{'id': item.product.id})}}" class="btn btn-danger btn-remove btn-sm">
+									<input type="hidden" class='product_id' value="{{item.product.id}}" />
+									<i class="fas fa-trash"></i>
+									</a>
+									</td>
+								</tr>
+								
+							{% endfor %}
+							</tbody>
+							{# <tfoot>
+							<tr>
+									<td colspan="3" class="text-right">Total :</td>
+									<td>{{total}}</td>
+									<td></td>
+							</tr>
+							</tfoot> #}
+					</table>
+				
+				</div>
+
+			
+				{% else %}
+
+				<H2 class="text-center">
+				C'EST VIDE!
+				</H2>
+				
+			
+				{% endif %}
+			</div>	
+			</div>	
+			
+			<!-- payment method -->
+				<div class="row payment_method wow fadeInDown   animated">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<h3>Payment methods</h3>
+						<div class="inner_payment_method">
+							{# <div class="box-radio">
+							
+								
+								<div class="radio-panel">
+									<label class="radio-inline">
+										<input name="input-group-radio" value="paypal" type="radio" class="radio-custom"><span class="radio-custom-dummy"></span>PayPal
+									</label>
+								
+								</div>
+								<div class="radio-panel">
+									<label class="radio-inline">
+										<input name="input-group-radio" value="mvola" type="radio" class="radio-custom"><span class="radio-custom-dummy"></span>Mvola
+									</label>
+									
+								</div>
+							</div>
+
+							<div class="clear"></div> #}
+							 <div id="paypal-button-container"></div>
+						</div>
+					</div>
+					<!--Cart total -->
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wow fadeInDown   animated">
+					  <h3>Cart total</h3>
+						  <div class="table-custom-responsive">
+							<table class="table-custom table-responsive">
+								  <tbody>
+									<tr>
+									  <td>Cart Subtotal</td>
+									  <td>${{total}}</td>
+									</tr>
+									<tr>
+									  <td>Shipping</td>
+									  <td>Free</td>
+									</tr>
+									<tr>
+									  <td>Total</td>
+									  <td>${{total}}</td>
+									</tr>
+								  </tbody>
+							</table>
+							
+							<a href="{{path('app_validate_commande')}}" class="btn">Confirm Order</a>
+						</div>
+					</div>
+				</div>
+			<!-- payment method -->
+		</div>	
+	</div>	
+<!-- cart end-->	
+</div>
+{% endblock %}

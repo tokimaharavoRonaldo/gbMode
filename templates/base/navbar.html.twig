@@ -1,0 +1,228 @@
+
+<header class="header-area">
+	<!-- Top Header -->
+	<div class="top-header">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<ul class="top-header-contact-info">
+						<li><H3>Going beyond mode</H3></li>
+					</ul>
+				</div>
+				
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<ul class="top-header-social header_account">
+						<li><a href="{{path('app_login')}}"><i class="fa fa-sign-in"></i> Login <span>/</span></a> </li>
+						<li><a href="{{path('app_register')}}"><i class="fa fa-pencil-square-o"></i> Register</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Top Header -->
+
+	<!-- Start Navbar Area -->
+	<div class="navbar-area">
+		<div class="fashion-responsive-nav">
+			<div class="container-fluid">
+			<div class="row">
+			<div class="row align-items-center">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<ul class="top-header-contact-info">
+						<li><H3>Going beyond mode</H3></li>
+					</ul>
+				</div>
+				
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<ul class="top-header-social header_account">
+						<li><a href="{{path('app_login')}}"><i class="fa fa-sign-in"></i> Login <span>/</span></a> </li>
+						<li><a href="{{path('app_register')}}"><i class="fa fa-pencil-square-o"></i> Register</a></li>
+					</ul>
+				</div>
+
+			</div>
+			</div>
+				<div class="row">
+					<div class="fashion-responsive-menu">
+						<div class="logo">
+							<a href="index.html">
+								<img src="assets/image/logo/logo.png" alt="logo">
+							</a>
+						</div>
+						
+						
+						<div class="others-option align-items-center">
+									<div class="option-item">
+										<div class="cart-btn">
+											<a href="{{path('app_panier')}}"  {% if app.request.attributes.get('_route') == 'app_panier' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}><i class="fa fa-shopping-cart"></i><span class="nbre_cart">{{panierNavbar()}}</span></a>
+										</div>
+									</div>
+
+									<div class="option-item">
+										<div class="search-btn-box">
+											<a href="#search"  {% if app.request.attributes.get('_route') == 'app_filter_product' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}><i class="search-btn fa fa-search"></i></a>
+										</div>
+									</div>
+
+									<!--<div class="option-item">
+										<a href="contact_us.html" class="btn"> Appointment</a>
+									</div>-->
+								</div>
+					<!--mobile Menu  -->
+
+					<div id="mySidenav" class="sidenav">
+						<div class="menu_slid_bg">
+							<a href="javascript:void(0)" class="closebtn" >×</a>
+							
+								<div class="col-sm-12" style="padding:0px;">
+									<h3>Categories</h3>
+									
+									<ul class="accordion" id="accordion-category">
+										<li class="panel mobile_menu_li">
+											<a href="{{path('app_home')}}"  {% if app.request.attributes.get('_route') == 'app_home' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}> Home</a>
+										</li>
+										<li class="panel mobile_menu_li">
+											<a href="{{path('app_vetement')}}"  {% if app.request.attributes.get('_route') == 'app_vetement' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}> Produits</a>
+										</li>
+										
+										
+								<!--	<li class="panel mobile_menu_li">
+											<a href="#" class="">Accessories</a>
+												<span class="head"><a style="" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-category" href="#category83" aria-expanded="false">
+												<span class="plus">+</span><span class="minus">-</span></a></span>
+												<div id="category83" class="panel-collapse collapse" style="clear: both; height: 0px;" aria-expanded="false">
+													<ul>
+														<li>
+															 <a href="services.html">Services</a>
+														</li>
+														<li>
+															 <a href="full_services_page.html">Services Full Page</a>
+														</li>
+													</ul>
+												</div>
+										</li>
+										-->
+										
+										<li class="panel mobile_menu_li">
+											{# <a href="#"  {% if app.request.attributes.get('_route') == 'app_categorie' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}>Categories</a>
+												<span class="head"><a style="" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion-category" href="#category84" aria-expanded="false">
+												<span class="plus">+</span><span class="minus">-</span></a></span>
+												<div id="category84" class="panel-collapse collapse" style="clear: both; height: 0px;" aria-expanded="false">
+													<ul>
+													{% for categorie in categorieNavbar() %}
+										<li class="nav-item"><a href="{{path('app_categorie',{'slug': categorie.slug})}}" class="nav-link">{{categorie.nom}}</a></li>
+										{% endfor %}
+													</ul>
+												</div> #}
+												<div class="btn-group" role="group">
+											<a href="" id="btnGroupDrop1"  {% if app.request.attributes.get('_route') == 'app_categorie' %}class="btn btn-default dropdown-togglective"{% else %}class="btn btn-default dropdown-toggle"{% endif %} aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Action <span class="caret"></span></a>
+											<ul class="dropdown-menu" >
+											{% for categorie in categorieNavbar() %}
+																					<li class="nav-item"><a href="{{path('app_categorie',{'slug': categorie.slug})}}" class="dropdown-item">{{categorie.nom}}</a></li>
+																					{% endfor %}
+											{# <button type="button" href="" data-bs-toggle="modal" data-href="#"  data-bs-target="#create_modal"  class="dropdown-item my_modal" ><i class="fas fa-eye" aria-hidden="true"></i> view</button>
+											<a href="#"  class="dropdown-item" ><i class="fas fa-edit" aria-hidden="true"></i>edit</a>
+
+											<a href="#"  class="dropdown-item"><i class="fas fa-trash" aria-hidden="true"></i>delete</a> #}
+											</ul>
+											</div>
+
+	
+										</li>
+										
+										<li class="panel mobile_menu_li">
+											<a href="{{path('app_contact')}}"  {% if app.request.attributes.get('_route') == 'app_contact' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}> Contact</a>
+										</li>
+										
+									
+										<li class="panel mobile_menu_li">
+											<a href="{{path('app_apropos')}}"  {% if app.request.attributes.get('_route') == 'app_aprodpos' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}> A propos</a>
+										</li>
+									</ul>
+							<div class="clear"></div>
+							</div>
+							 
+						</div>
+					</div>
+
+					<span class="menu_open">&#9776; Menu</span>
+					<!-- mobile Menu  end-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fashion-nav">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="header_menu_wrapper">
+						<nav class="navbar navbar-expand-md navbar-light">
+							<a class="navbar-brand" href="index.html">
+								<img src="assets/image/logo/logo.png" alt="logo">
+							</a>
+
+							<div class="collapse navbar-collapse mean-menu" style="display: block;">
+								<ul class="navbar-nav">
+									<li class="nav-item"><a href="{{path('app_home')}}"  {% if app.request.attributes.get('_route') == 'app_home' %}class="nav-link active active"{% else %}class="nav-link"{% endif %} >Home</a></li>
+									
+									<li class="nav-item"><a href="{{path('app_vetement')}}"  {% if app.request.attributes.get('_route') == 'app_vetement' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}>Produit</a></li>
+
+									<!--<li class="nav-item"><a href="" class="nav-link">Our Services <i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown-menu">
+											<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+											<li class="nav-item"><a href="full_services_page.html" class="nav-link">Services Full Page</a></li>
+
+										</ul>
+									</li>-->
+									<li class="nav-item"><a href="#"  {% if app.request.attributes.get('_route') == 'app_categorie' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}>Categories<i class="fa fa-angle-down"></i></a>
+										<ul class="dropdown-menu">
+										{% for categorie in categorieNavbar() %}
+										<li class="nav-item"><a href="{{path('app_categorie',{'slug': categorie.slug})}}" class="nav-link">{{categorie.nom}}</a></li>
+										{% endfor %}
+										
+										</ul>
+									</li> 
+							
+									<li class="nav-item"><a href="{{path('app_contact')}}"  {% if app.request.attributes.get('_route') == 'app_contact' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}>Contact</a></li>
+									<li class="nav-item"><a href="{{path('app_apropos')}}"  {% if app.request.attributes.get('_route') == 'app_apropos' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}>A propos</a></li>
+								</ul>
+
+								<div class="others-option align-items-center">
+									<div class="option-item">
+										<div class="cart-btn">
+											<a href="{{path('app_panier')}}"  {% if app.request.attributes.get('_route') == 'app_panier' %}class="nav-link active active"{% else %}class="nav-link"{% endif %} ><i class="fa fa-shopping-cart"></i><span class="nbre_cart">{{panierNavbar()}}</span></a>
+										</div>
+									</div>
+
+									<div class="option-item">
+										<div class="search-btn-box">
+											<a href="#search"  {% if app.request.attributes.get('_route') == 'app_filter_product' %}class="nav-link active active"{% else %}class="nav-link"{% endif %}><i class="search-btn fa fa-search"></i></a>
+										</div>
+									</div>
+
+									<!--<div class="option-item">
+										<a href="contact_us.html" class="btn"> Appointment</a>
+									</div>-->
+								</div>
+							</div>
+						</nav>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- End Navbar Area --> 
+<div id="search" class="input-group header">
+	<span class="close">x</span>
+		<form method="GET" action="{{path('app_filter_product')}}">
+			<input value="" name="search" type="search" placeholder="Search">
+			 <span class="input-group-btn">
+				<button type="submit" class="btn"><i class="fa fa-search"></i></button>
+			</span>
+			<div class="clear"></div>
+		</form>
+</div>	
+</header>

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{vetements.nom}}{% endblock %}
+
+{% block body %}
+<section class="main_breadcrumb" style="background-image: url({{vich_uploader_asset(vetements ,'imageFile')}});">
+	<div class="container-fluid">
+		<div class="row">
+			
+		</div>
+	</div>
+</section>
+<div id="content" class="single_products_page">
+<!-- single products page -->
+	<div id="products_products" class="single_products_section">
+		<div class="container-fluid">
+			<div class="row">
+		
+				
+				
+				<div class="item col-sm-6" id="item">
+				<input type="hidden" class='product_id' value="{{vetements.id}}" />
+					<div class="eb_left single_products_left_side">
+						<h2>{{vetements.nom}}</h2>
+						
+						<hr>
+						<div class="price-block">
+							<div class="price-box">
+								<p class="in-stock"><i class="fa fa-check"></i> In Stock</p>
+								<p class="special-price"> <span >Prix :</span> <span id="product-price-48" class="price"> ${{vetements.prix}} </span> </p>
+								<p > <span >Taille :</span> <span id="product-taille-48" class="taille">  {{vetements.taille}} </span> </p>
+							</div>
+						</div>
+						
+						
+						
+						<div class="short-description">
+							<h3>description</h3>
+                            <p>{{vetements.description}}</p>
+						</div>
+						<div class="add-to-box">
+							<div class="add-to-cart">
+								
+								{# <button  class="btn btn-cart btn-default" title="Add to Cart" type="button">Add to Cart</button> #}
+									<a href="{{path('app_panier_add',{'id': vetements.id})}}" class="btn btn-add-panier wow fadeInDown animated" ><span><i class="fa fa-shopping-cart"></i> Add to Cart</span></a>
+							</div>
+						</div>
+						
+					
+						
+					</div>	
+				</div>
+			</div>		
+			
+			
+				
+		
+			
+		</div>	
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+<div id="content" class="contact_page">
+<!-- Our Services -->
+	<div id="contact">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="block-sm login_box">
+						<h3>Nous contacter</h3>
+						<div class="comments-form-wrapper clearfix comment-respond">
+							{{form_start(form)}}
+							{% for message in app.flashes('success') %}
+							<div class="alert alert-success">
+							{{message}}
+							</div>
+							{% endfor %}
+							<div class="my-custom-class-for-errors">
+							{{form_errors(form)}}
+							</div>
+                            <div class="field">
+                            
+									<label for="nom">
+                                    {{form_label(form.nom)}}
+                                    </label>
+                                    {{form_widget(form.nom)}}
+									{# <input type="text" class="input-text" title="Name" value="" id="user" name="user_name"> #}
+							</div>
+
+                               <div class="field">
+                            
+									<label for="email">
+                                    {{form_label(form.email)}}
+                                    </label>
+                                    {{form_widget(form.email)}}
+									{# <input type="text" class="input-text" title="Name" value="" id="user" name="user_name"> #}
+							</div>
+
+                               <div class="field">
+                            
+									<label for="message">
+                                    {{form_label(form.message)}}
+                                    </label>
+                                    {{form_widget(form.message)}}
+									{# <input type="text" class="input-text" title="Name" value="" id="user" name="user_name"> #}
+							</div>
+                            <div style="width:96%" class="button-set">
+                                    {{form_widget(form.envoyer)}}
+									
+								</div>
+                             
+							{{form_end(form)}}
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+	</div>
+{% endblock %}

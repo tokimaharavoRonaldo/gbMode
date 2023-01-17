@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+
+<!-- cart -->
+	<div id="cart" class="cart_section">
+		<div class="container-fluid">
+			<div class="row">
+			<form action="{{path('app_checkout')}}" method="POST">
+			{% if items | length > 0 %}
+				<div class="table-custom-responsive wow fadeInDown animated">
+				
+					<table class="table-custom table-cart table-responsive">
+						<thead>
+							<tr>
+								<th>Product name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Total</th>
+								<th></th>
+							</tr>
+						</thead>
+							<tbody>
+							{% for item in items %}
+								<tr>
+									<td><img src="{{vich_uploader_asset(item.product ,'imageFile')}}" alt="" width="146" height="132"><a class="table-cart-link" style="margin-left: 15px;" href="{{path('app_show',{'slug': item.product.slug})}}">{{item.product.nom}}</a></td>
+									<td>${{item.product.prix}}</td>
+									<td>
+										<div class="table-cart-stepper">
+												<div class="stepper "><input name="qty[{{item.id}}]" class="form-input stepper-input" type="number" data-zeros="true" value="{{item.quantity}}" min="1" max="1000"><span class="stepper-arrow up"></span><span class="stepper-arrow down"></span></div>
+										</div>
+									</td>
+									<td>${{item.product.prix * item.quantity}}</td>
+									<td>
+									<a href="{{path('app_panier_remove',{'id': item.product.id})}}" class="btn btn-danger btn-remove btn-sm">
+									<input type="hidden" class='product_id' value="{{item.product.id}}" />
+									<i class="fas fa-trash"></i>
+									</a>
+									</td>
+								</tr>
+								
+							{% endfor %}
+							</tbody>
+							
+							{# <tfoot>
+							<tr>
+									<td colspan="3" class="text-right">Total :</td>
+									<td>{{total}}</td>
+									<td></td>
+							</tr>
+							</tfoot> #}
+					</table>
+				
+				</div>
+
+				<div class="group-xl group-justify  wow fadeInDown animated">
+					
+					<div>
+						<div class="group-xl group-middle">
+						 <button type="submit" class="btn btn-checkout" >Proceed to checkout</button>
+							<div>
+							  <div class="group-md group-middle">
+							  
+								<div class="heading-5 font-weight-medium text-gray-500">Total</div>
+								<div class="heading-3 font-weight-normal">${{total}}</div>
+							  </div>
+							</div><a href="{{path('app_panier_vide')}}" class="btn btn-default" >vider<i class="fas fa-trash"></i></a>
+						</div>
+					</div>
+				</div>
+				{% else %}
+
+				<H2 class="text-center">
+				C'EST VIDE!
+				</H2>
+				
+				<div class=" d-flex align-items-center justify-content-center">
+					
+								<div class="heading-5 font-weight-medium text-gray-500">Total</div>
+								<div class="heading-3 font-weight-normal">$0</div>
+							{# </div><a class="btn btn-checkout" href="{{path('app_checkout')}}">Proceed to checkout</a> #}
+				</div>
+				{% endif %}
+
+			</form>	
+			</div>	
+		</div>	
+	</div>	
+<!-- cart end-->	
+
+
+<!-- Footer Section End -->
+<!-- back-to-top scrtion -->
+{# <div class="top_button">
+  <a class="back-to-top" style="cursor:pointer;" id="top-scrolltop"><i class="fa fa-angle-up"></i></a>
+</div> #}
+<!-- back-to-top scrtion End-->
+<!-- script files -->
+	{# <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/custom.js"></script> #}
+<!-- script files -->
+<
+
+{% endblock %}
